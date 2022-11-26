@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package bilibili.metadata.restriction;
-option go_package = "bilibili/proto/generated/metadata/restriction";
+option go_package = "github.com/hebingchang/bilibili-go/proto/generated/metadata/restriction";
 
 // 模式类型
 enum ModeType {

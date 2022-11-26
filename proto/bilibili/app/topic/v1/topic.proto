@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package bilibili.app.topic.v1;
-option go_package = "bilibili/proto/generated/app/topic";
+option go_package = "github.com/hebingchang/bilibili-go/proto/generated/app/topic";
 
 import "bilibili/app/dynamic/v2/dynamic.proto";
 import "bilibili/app/card/v1/common.proto";

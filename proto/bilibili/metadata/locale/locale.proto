@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package bilibili.metadata.locale;
-option go_package = "bilibili/proto/generated/metadata/locale";
+option go_package = "github.com/hebingchang/bilibili-go/proto/generated/metadata/locale";
 
 // 区域标识
 // gRPC头部:x-bili-locale-bin

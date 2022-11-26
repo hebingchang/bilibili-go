@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package bilibili.app.playeronline.v1;
-option go_package = "bilibili/proto/generated/app/playeronline";
+option go_package = "github.com/hebingchang/bilibili-go/proto/generated/app/playeronline";
 
 // 在线人数
 service PlayerOnline {

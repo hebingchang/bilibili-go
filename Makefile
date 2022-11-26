@@ -1,0 +1,2 @@
+proto:
+	protoc -I./proto --go_out=. --go-grpc_out=. --go_opt=module=github.com/hebingchang/bilibili-go --go-grpc_opt=module=github.com/hebingchang/bilibili-go proto/bilibili/app/**/*.proto proto/bilibili/metadata/**/*.proto proto/bilibili/pagination/**/*.proto

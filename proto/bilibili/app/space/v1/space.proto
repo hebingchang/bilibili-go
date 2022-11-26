@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package bilibili.app.space.v1;
-option go_package = "bilibili/proto/generated/app/space";
+option go_package = "github.com/hebingchang/bilibili-go/proto/generated/app/space";
 
 //
 service Space {

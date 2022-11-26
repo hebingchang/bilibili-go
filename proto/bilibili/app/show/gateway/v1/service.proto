@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package bilibili.app.show.gateway.v1;
-option go_package = "bilibili/proto/generated/app/show/gateway";
+option go_package = "github.com/hebingchang/bilibili-go/proto/generated/app/show/gateway";
 
 import "bilibili/broadcast/message/main/native.proto";
 

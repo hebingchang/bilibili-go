@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package bilibili.metadata.parabox;
-option go_package = "bilibili/proto/generated/metadata/parabox";
+option go_package = "github.com/hebingchang/bilibili-go/proto/generated/metadata/parabox";
 
 //
 message Exp {

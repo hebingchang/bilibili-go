@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package bilibili.api.player.v1;
-option go_package = "bilibili/proto/generated/api/player";
+option go_package = "github.com/hebingchang/bilibili-go/proto/generated/api/player";
 
 // 心跳上报
 service Heartbeat {

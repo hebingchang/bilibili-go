@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package bilibili.app.resource.privacy.v1;
-option go_package = "bilibili/proto/generated/app/privacy";
+option go_package = "github.com/hebingchang/bilibili-go/proto/generated/app/privacy";
 
 // 隐私
 service Privacy {

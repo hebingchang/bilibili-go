@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package bilibili.app.archive.v1;
-option go_package = "bilibili/proto/generated/app/archive";
+option go_package = "github.com/hebingchang/bilibili-go/proto/generated/app/archive";
 
 // 稿件基本信息
 message Arc {

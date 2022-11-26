@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package bilibili.account.fission.v1;
-option go_package = "bilibili/proto/generated/account/fission";
+option go_package = "github.com/hebingchang/bilibili-go/proto/generated/account/fission";
 
 // Fission裂变
 service Fission {

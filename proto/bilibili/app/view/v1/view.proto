@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package bilibili.app.view.v1;
-option go_package = "bilibili/proto/generated/app/view";
+option go_package = "github.com/hebingchang/bilibili-go/proto/generated/app/view";
 
 import "google/protobuf/any.proto";
 import "bilibili/app/archive/middleware/v1/preload.proto";

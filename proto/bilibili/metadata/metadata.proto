@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package bilibili.metadata;
-option go_package = "bilibili/proto/generated/metadata";
+option go_package = "github.com/hebingchang/bilibili-go/proto/generated/metadata";
 
 // 请求元数据
 // gRPC头部:x-bili-metadata-bin

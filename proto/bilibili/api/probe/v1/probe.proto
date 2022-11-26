@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package bilibili.api.probe.v1;
-option go_package = "bilibili/proto/generated/api/probe";
+option go_package = "github.com/hebingchang/bilibili-go/proto/generated/api/probe";
 
 //
 service Probe {

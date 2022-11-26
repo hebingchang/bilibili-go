@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package bilibili.app.resource.v1;
-option go_package = "bilibili/proto/generated/app/resource";
+option go_package = "github.com/hebingchang/bilibili-go/proto/generated/app/resource";
 
 //
 service Module {

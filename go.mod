@@ -1,4 +1,4 @@
-module bilibili
+module github.com/hebingchang/bilibili-go
 
 go 1.19
 
