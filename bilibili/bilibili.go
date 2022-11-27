@@ -6,6 +6,7 @@ import (
 	"crypto/x509"
 	"github.com/golang/protobuf/proto"
 	"github.com/hebingchang/bilibili-go/proto/generated/app/archive/middleware"
+	"github.com/hebingchang/bilibili-go/proto/generated/app/playurl"
 	"github.com/hebingchang/bilibili-go/proto/generated/app/view"
 	bilimeta "github.com/hebingchang/bilibili-go/proto/generated/metadata"
 	"github.com/hebingchang/bilibili-go/proto/generated/metadata/device"
@@ -21,6 +22,10 @@ import (
 var (
 	conn *grpc.ClientConn
 )
+
+type Client struct {
+	AccessToken string
+}
 
 func init() {
 	systemRoots, err := x509.SystemCertPool()
@@ -76,9 +81,9 @@ func buildContext(context context.Context) context.Context {
 	}))
 }
 
-func GetArchiveInfo[T int64 | string](archive T) (*view.ViewReply, error) {
-	client := view.NewViewClient(conn)
+func (c *Client) GetViewByAvid(avid int64) (*view.ViewReply, error) {
 	req := &view.ViewReq{
+		Aid:       avid,
 		From:      "64",
 		Qn:        112,
 		Fnval:     976,
@@ -91,16 +96,75 @@ func GetArchiveInfo[T int64 | string](archive T) (*view.ViewReply, error) {
 			VoiceBalance: 1,
 		},
 	}
+	return c.GetView(req)
+}
 
-	switch v := ((any)(archive)).(type) {
-	case string:
-		req.Bvid = v
-		break
-	case int64:
-		req.Aid = v
+func (c *Client) GetViewByBvid(bvid string) (*view.ViewReply, error) {
+	req := &view.ViewReq{
+		Bvid:      bvid,
+		From:      "64",
+		Qn:        112,
+		Fnval:     976,
+		Fourk:     1,
+		Spmid:     "main.ugc-video-detail.0.0",
+		FromSpmid: "main.my-history.0.0",
+		PlayerArgs: &middleware.PlayerArgs{
+			Qn:           112,
+			Fnval:        976,
+			VoiceBalance: 1,
+		},
 	}
+	return c.GetView(req)
+}
+
+func (c *Client) GetView(req *view.ViewReq) (*view.ViewReply, error) {
+	client := view.NewViewClient(conn)
 
 	return client.View(
+		buildContext(context.Background()),
+		req,
+	)
+}
+
+func (c *Client) GetPlayViewById(aid int64, cid int64) (*playurl.PlayViewReply, error) {
+	req := &playurl.PlayViewReq{
+		Aid:             aid,
+		Cid:             cid,
+		Qn:              64,
+		Fnval:           976,
+		Spmid:           "main.ugc-video-detail.0.0",
+		FromSpmid:       "tm.recommend.0.0",
+		PreferCodecType: playurl.CodeType_CODE265,
+		VoiceBalance:    1,
+	}
+	return c.GetPlayView(req)
+}
+
+func (c *Client) GetPlayView(req *playurl.PlayViewReq) (*playurl.PlayViewReply, error) {
+	client := playurl.NewPlayURLClient(conn)
+
+	return client.PlayView(
+		buildContext(context.Background()),
+		req,
+	)
+}
+
+func (c *Client) GetPlayUrlById(aid int64, cid int64) (*playurl.PlayURLReply, error) {
+	req := &playurl.PlayURLReq{
+		Aid:       aid,
+		Cid:       cid,
+		Qn:        64,
+		Fnval:     976,
+		Spmid:     "main.ugc-video-detail.0.0",
+		FromSpmid: "tm.recommend.0.0",
+	}
+	return c.GetPlayUrl(req)
+}
+
+func (c *Client) GetPlayUrl(req *playurl.PlayURLReq) (*playurl.PlayURLReply, error) {
+	client := playurl.NewPlayURLClient(conn)
+
+	return client.PlayURL(
 		buildContext(context.Background()),
 		req,
 	)

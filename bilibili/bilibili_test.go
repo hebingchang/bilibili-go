@@ -4,8 +4,15 @@ import (
 	"testing"
 )
 
-func TestGetArchiveInfo(t *testing.T) {
-	_, err := GetArchiveInfo("BV15d4y1175g")
+var client Client
+
+func TestGetViewInfo(t *testing.T) {
+	view, err := client.GetViewByBvid("BV15d4y1175g")
+	if err != nil {
+		t.Error(err)
+		return
+	}
+	_, err = client.GetPlayUrlById(view.Arc.Aid, view.Arc.FirstCid)
 	if err != nil {
 		t.Error(err)
 		return
